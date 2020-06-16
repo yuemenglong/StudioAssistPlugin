@@ -11,7 +11,7 @@ namespace StudioAssistPlugin.FkBone
     {
 //        public static FkChara[] Charas = new FkChara[0];
 //        public static bool IsMarkerEnabled = false;
-        private static string regex = @"^cha[FM]\d{3}$";
+        private static string regex = @"^cha[FM]_\d{3}$";
 
         public static FkChara BuildChara(GuideObject go)
         {
@@ -30,7 +30,6 @@ namespace StudioAssistPlugin.FkBone
             {
                 return null;
             }
-            Tracer.Log(root);
             return new FkChara(root);
         }
 

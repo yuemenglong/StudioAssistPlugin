@@ -12,7 +12,6 @@ namespace StudioAssistPlugin.Util
             {
                 return null;
             }
-            Tracer.Log("YML Find", transform.name, pattern);
             if (Regex.IsMatch(transform.name, pattern))
             {
                 return transform;
