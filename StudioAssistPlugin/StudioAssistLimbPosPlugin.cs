@@ -57,7 +57,7 @@ namespace StudioAssistPlugin
             Vector3 vector33 = vector32 + ray.direction * -1 * delta.x;
             vector33.y = delta.y;
             delta = vector33;
-            delta = delta * 12.0f;
+            delta = delta * 20.0f;
 
 
             var rotater = FkCharaMgr.BuildFkJointRotater(go);
