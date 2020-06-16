@@ -48,7 +48,7 @@ namespace StudioAssistPlugin
             }
 
             float angle = 1.0f;
-            float dist = 0.003f;
+            float dist = 0.02f;
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
