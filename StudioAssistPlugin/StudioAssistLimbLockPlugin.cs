@@ -71,7 +71,7 @@ namespace StudioAssistPlugin
 
         private void InnerUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.O) &&
+            if (Input.GetKeyDown(KeyCode.T) &&
                 (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)))
             {
                 var chara = FkCharaMgr.FindSelectChara();
@@ -87,7 +87,7 @@ namespace StudioAssistPlugin
                     });
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.P) &&
+            else if (Input.GetKeyDown(KeyCode.T) &&
                 (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
             {
                 var go = Context.GuideObjectManager().selectObject;
@@ -102,7 +102,7 @@ namespace StudioAssistPlugin
                     _lockRecord.Add(r);
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.P))
+            else if (Input.GetKeyDown(KeyCode.T))
             {
                 _lockRecord.Clear();
             }
