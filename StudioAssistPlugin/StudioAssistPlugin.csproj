@@ -90,6 +90,7 @@
     <Compile Include="Util\GUIX.cs" />
     <Compile Include="Util\Kit.cs" />
     <Compile Include="Util\Tracer.cs" />
+    <Compile Include="Util\UndoRedoHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
