@@ -82,6 +82,7 @@
     <Compile Include="StudioAssistLimbLockPlugin.cs" />
     <Compile Include="StudioAssistLimbPosPlugin.cs" />
     <Compile Include="StudioAssistLimbRotPlugin.cs" />
+    <Compile Include="StudioAssistSelectPlugin.cs" />
     <Compile Include="Util\Context.cs" />
     <Compile Include="Util\Fp.cs" />
     <Compile Include="Util\GameObjectHelper.cs" />
