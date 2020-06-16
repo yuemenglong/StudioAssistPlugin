@@ -58,7 +58,10 @@ namespace StudioAssistPlugin
             vector33.y = delta.y;
             delta = vector33;
             delta = delta * 20.0f;
-
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                delta = delta / 4;
+            }
 
             var rotater = FkCharaMgr.BuildFkJointRotater(go);
             rotater.MoveTo(go.transformTarget.position + delta);

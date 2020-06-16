@@ -25,7 +25,7 @@ namespace StudioAssistPlugin
             try
             {
                 // Rotate();
-               Move();
+                Move();
             }
             catch (Exception e)
             {
@@ -39,7 +39,7 @@ namespace StudioAssistPlugin
 
         private void Move(Vector3 delta)
         {
-//            var go = Context.GuideObjectManager().selectObject;
+            //            var go = Context.GuideObjectManager().selectObject;
             //            if (go == null || !go.enablePos)
             //            {
             //                return;
@@ -60,6 +60,10 @@ namespace StudioAssistPlugin
             vector33.y = delta.y;
             delta = vector33;
             delta = delta * 20.0f;
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                delta = delta / 4;
+            }
             Context.GuideObjectManager().selectObjects.Foreach(go =>
             {
                 if (go.enablePos)
@@ -84,7 +88,7 @@ namespace StudioAssistPlugin
             }
             lastMousePos = GetMousePos();
         }
-        
+
         private Vector2 GetMousePos()
         {
             Vector2 vector2 = Input.mousePosition;
