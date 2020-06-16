@@ -67,6 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FKBone\FkBone.cs" />
+    <Compile Include="FKBone\FkChara.cs" />
+    <Compile Include="FKBone\FkCharaMgr.cs" />
+    <Compile Include="FKJoint\FkJoint.cs" />
+    <Compile Include="FKBone\FkBoneHelper.cs" />
+    <Compile Include="FKJoint\FkJointRotater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudioAssistFkPlugin.cs" />
     <Compile Include="StudioAssistIKPlugin.cs" />
