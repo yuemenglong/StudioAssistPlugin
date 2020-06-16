@@ -3,18 +3,42 @@ using System.Collections.Generic;
 using System.Reflection;
 using Studio;
 using UnityEngine;
+using static Studio.OIBoneInfo;
+using static Studio.OICharInfo;
 
 namespace StudioAssistPlugin.Util
 {
     public class Context : MonoBehaviour
     {
+        private static bool paused = false;
         public static void test()
         {
             TreeNodeObject selectNode = Studio().treeNodeCtrl.selectNode;
-            ObjectCtrlInfo objCtrl = Studio().dicInfo[selectNode];
-            if(objCtrl is OCIChar)
+            if (!Studio().dicInfo.ContainsKey(selectNode))
             {
-
+                return;
+            }
+            ObjectCtrlInfo objCtrl = Studio().dicInfo[selectNode];
+            if (objCtrl is OCIChar)
+            {
+                var ch = (OCIChar)objCtrl;
+                Tracer.Log(ch.isAnimeMotion, ch.animeSpeed, ch.fkCtrl);
+                if (paused == false)
+                {
+                    ch.animeSpeed = 0;
+                    ch.fkCtrl.CopyBone();
+                    ch.ActiveKinematicMode(KinematicMode.FK, true, false);
+                    paused = true;
+                }
+                else
+                {
+                    ch.ActiveKinematicMode(KinematicMode.FK, false, false);
+                    ch.animeSpeed = 1;
+                    paused = false;
+                }
+            }
+            else
+            {
             }
         }
         public static Studio.Studio Studio()
@@ -36,7 +60,7 @@ namespace StudioAssistPlugin.Util
         {
             return Studio().cameraCtrl.mainCmaera;
         }
-        
+
         public static HashSet<GuideObject> HashSelectObject()
         {
             return GuideObjectManager().GetPrivateField<HashSet<GuideObject>>("hashSelectObject");

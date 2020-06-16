@@ -21,7 +21,9 @@ namespace StudioAssistPlugin
         {
             try
             {
-                InnerUpdate();
+                // if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0))
+                    // Context.test();
+                // InnerUpdate();
             }
             catch (Exception e)
             {
