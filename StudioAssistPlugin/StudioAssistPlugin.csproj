@@ -62,6 +62,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\Libs\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\Libs\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\Libs\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -76,10 +79,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudioAssistFkPlugin.cs" />
     <Compile Include="StudioAssistIKPlugin.cs" />
+    <Compile Include="StudioAssistLimbLockPlugin.cs" />
+    <Compile Include="StudioAssistLimbPosPlugin.cs" />
+    <Compile Include="StudioAssistLimbRotPlugin.cs" />
     <Compile Include="Util\Context.cs" />
     <Compile Include="Util\Fp.cs" />
     <Compile Include="Util\GameObjectHelper.cs" />
     <Compile Include="Util\GuideObjectHelper.cs" />
+    <Compile Include="Util\GUIX.cs" />
     <Compile Include="Util\Kit.cs" />
     <Compile Include="Util\Tracer.cs" />
   </ItemGroup>

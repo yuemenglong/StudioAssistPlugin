@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BepInEx;
+using StudioAssistPlugin.FkBone;
 using StudioAssistPlugin.Util;
 using UnityEngine;
 
@@ -55,7 +56,7 @@ namespace StudioAssistPlugin
 
             var go = Context.GuideObjectManager().selectObject;
             var rotater = FkCharaMgr.BuildFkJointRotater(go);
-            rotater.moveTo(go.transformTarget.position + delta);
+            rotater.MoveTo(go.transformTarget.position + delta);
         }
 
         private void Move()
@@ -81,7 +82,7 @@ namespace StudioAssistPlugin
             {
                 return;
             }
-            if (!go.isLimb())
+            if (!go.IsLimb())
             {
                 return;
             }

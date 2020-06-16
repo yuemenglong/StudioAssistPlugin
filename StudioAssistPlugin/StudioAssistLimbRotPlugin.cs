@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BepInEx;
+using StudioAssistPlugin.FkBone;
 using StudioAssistPlugin.Util;
 using UnityEngine;
 
@@ -16,8 +17,6 @@ namespace StudioAssistPlugin
         {
 
         }
-
-        private Vector2 lastMousePos;
 
         private void Update()
         {
@@ -42,7 +41,7 @@ namespace StudioAssistPlugin
             {
                 return;
             }
-            if (!go.isLimb())
+            if (!go.IsLimb())
             {
                 return;
             }
@@ -57,38 +56,38 @@ namespace StudioAssistPlugin
             }
             if (Input.GetKey(KeyCode.X) && Input.GetMouseButton(0))
             {
-                FkJointAssist.Forward(go, dist);
+                FkCharaMgr.BuildFkJointRotater(go).Forward(dist);
             }
             else if (Input.GetKey(KeyCode.X) && Input.GetMouseButton(1))
             {
-                FkJointAssist.Forward(go, -dist);
+                FkCharaMgr.BuildFkJointRotater(go).Forward(-dist);
             }
             //
             else if (Input.GetKey(KeyCode.C) && Input.GetMouseButton(0))
             {
-                FkJointAssist.Tangent(go, angle);
+                FkCharaMgr.BuildFkJointRotater(go).Tangent(angle);
             }
             else if (Input.GetKey(KeyCode.C) && Input.GetMouseButton(1))
             {
-                FkJointAssist.Tangent(go, -angle);
+                FkCharaMgr.BuildFkJointRotater(go).Tangent(-angle);
             }
             //
             else if (Input.GetKey(KeyCode.V) && Input.GetMouseButton(0))
             {
-                FkJointAssist.Normals(go, angle);
+                FkCharaMgr.BuildFkJointRotater(go).Normals(angle);
             }
             else if (Input.GetKey(KeyCode.V) && Input.GetMouseButton(1))
             {
-                FkJointAssist.Normals(go, -angle);
+                FkCharaMgr.BuildFkJointRotater(go).Normals(-angle);
             }
             //
             else if (Input.GetKey(KeyCode.B) && Input.GetMouseButton(0))
             {
-                FkJointAssist.Revolution(go, angle);
+                FkCharaMgr.BuildFkJointRotater(go).Revolution(angle);
             }
             else if (Input.GetKey(KeyCode.B) && Input.GetMouseButton(1))
             {
-                FkJointAssist.Revolution(go, -angle);
+                FkCharaMgr.BuildFkJointRotater(go).Revolution(-angle);
             }
             // //
             // else if (Input.GetKey(KeyCode.G) && Input.GetMouseButton(0))

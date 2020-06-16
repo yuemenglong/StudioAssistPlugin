@@ -17,9 +17,6 @@ namespace StudioAssistPlugin
             
         }
 
-
-        private Vector2 lastMousePos;
-
         private void Update()
         {
             try
