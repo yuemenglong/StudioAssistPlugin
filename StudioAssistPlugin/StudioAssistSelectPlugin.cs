@@ -23,7 +23,7 @@ namespace StudioAssistPlugin
             {
                 // if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0))
                     // Context.test();
-                // InnerUpdate();
+                InnerUpdate();
             }
             catch (Exception e)
             {
@@ -33,7 +33,7 @@ namespace StudioAssistPlugin
 
         private void InnerUpdate()
         {
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0))
+            if (Input.GetKey(KeyCode.LeftAlt) && Input.GetMouseButtonDown(0))
             {
                 var minDist = double.MaxValue;
                 FkBone.FkBone minBone = null;
