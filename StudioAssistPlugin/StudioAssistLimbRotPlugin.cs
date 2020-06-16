@@ -9,17 +9,18 @@ using UnityEngine;
 
 namespace StudioAssistPlugin
 {
-    [BepInPlugin("io.github.yuemenglong.assist.limb.rot", "StudioAssistLimbRotPlugin", "1.0.0.0")]
+    [BepInPlugin("plugin.assist.limb.rot", "StudioAssistLimbRotPlugin", "1.0.0.0")]
     public class StudioAssistLimbRotPlugin : BaseUnityPlugin
     {
         // Awake is called once when both the game and the plug-in are loaded
         void Awake()
         {
-
+              Tracer.Log("YML StudioAssistLimbRotPlugin");
         }
 
         private void Update()
         {
+            
             try
             {
                 Rotate();

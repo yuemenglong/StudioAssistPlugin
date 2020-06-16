@@ -70,7 +70,13 @@ namespace StudioAssistPlugin.Util
 
         public static bool IsLimb(this GuideObject go)
         {
-            if(go.enablePos){
+            if (go == null)
+            {
+                return false;
+            }
+            Tracer.Log("YML IsLimb Name " + go.transformTarget.name);
+            if (go.enablePos)
+            {
                 return false;
             }
             return go.IsHand() || go.IsFoot();

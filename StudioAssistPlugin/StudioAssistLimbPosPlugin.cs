@@ -9,13 +9,13 @@ using UnityEngine;
 
 namespace StudioAssistPlugin
 {
-    [BepInPlugin("io.github.yuemenglong.assist.limb.rot", "StudioAssistLimbRotPlugin", "1.0.0.0")]
+    [BepInPlugin("plugin.studio.assist.limb.pos", "StudioAssistLimbRotPlugin", "1.0.0.0")]
     public class StudioAssistLimbPosPlugin : BaseUnityPlugin
     {
         // Awake is called once when both the game and the plug-in are loaded
         void Awake()
         {
-
+            Tracer.Log("YML StudioAssistLimbPosPlugin");
         }
 
         private Vector2 lastMousePos;
@@ -43,6 +43,11 @@ namespace StudioAssistPlugin
             {
                 return;
             }
+            var go = Context.GuideObjectManager().selectObject;
+            if (go == null || !go.IsLimb())
+            {
+                return;
+            }
 
             Vector3 vector31 = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, Input.mousePosition.z);
             Ray ray = camera.ScreenPointToRay(vector31);
@@ -54,7 +59,7 @@ namespace StudioAssistPlugin
             delta = vector33;
             delta = delta * 4.0f;
 
-            var go = Context.GuideObjectManager().selectObject;
+
             var rotater = FkCharaMgr.BuildFkJointRotater(go);
             rotater.MoveTo(go.transformTarget.position + delta);
         }

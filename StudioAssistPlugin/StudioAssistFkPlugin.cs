@@ -8,13 +8,13 @@ using UnityEngine;
 
 namespace StudioAssistPlugin
 {
-    [BepInPlugin("io.github.yuemenglong.assist.fk", "StudioAssistFKPlugin", "1.0.0.0")]
+    [BepInPlugin("plugin.studio.assist.fk", "StudioAssistFKPlugin", "1.0.0.0")]
     public class StudioAssistFKPlugin : BaseUnityPlugin
     {
         // Awake is called once when both the game and the plug-in are loaded
         void Awake()
         {
-            
+            Tracer.Log("YML StudioAssistFKPlugin");
         }
 
         private void Update()

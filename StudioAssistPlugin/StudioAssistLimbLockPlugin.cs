@@ -9,10 +9,14 @@ using UnityEngine;
 
 namespace StudioAssistPlugin
 {
-    [BepInPlugin("io.github.yuemenglong.assist.limb.lock", "StudioAssistLimbRotPlugin", "1.0.0.0")]
+    [BepInPlugin("plugin.studio.assist.limb.lock", "StudioAssistLimbRotPlugin", "1.0.0.0")]
     public class StudioAssistLimbLockPlugin : BaseUnityPlugin
     {
-  
+        void Awake()
+        {
+            Tracer.Log("YML StudioAssistLimbLockPlugin");
+        }
+
         struct LockRecord
         {
             public FkBone.FkBone Bone;
