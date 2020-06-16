@@ -70,6 +70,9 @@ namespace StudioAssistPlugin.Util
 
         public static bool IsLimb(this GuideObject go)
         {
+            if(go.enablePos){
+                return false;
+            }
             return go.IsHand() || go.IsFoot();
         }
 
