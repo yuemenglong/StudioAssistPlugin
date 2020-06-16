@@ -14,7 +14,7 @@ namespace StudioAssistPlugin
         // Awake is called once when both the game and the plug-in are loaded
         void Awake()
         {
-            Tracer.Log("YML StudioAssistFKPlugin");
+            Tracer.Log("StudioAssistFKPlugin");
         }
 
         private void Update()

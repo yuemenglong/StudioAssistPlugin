@@ -14,7 +14,7 @@ namespace StudioAssistPlugin
     {
         void Awake()
         {
-            Tracer.Log("YML StudioAssistLimbLockPlugin");
+            Tracer.Log("StudioAssistLimbLockPlugin");
         }
 
         struct LockRecord

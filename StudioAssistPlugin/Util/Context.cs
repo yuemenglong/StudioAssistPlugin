@@ -8,6 +8,15 @@ namespace StudioAssistPlugin.Util
 {
     public class Context : MonoBehaviour
     {
+        public static void test()
+        {
+            TreeNodeObject selectNode = Studio().treeNodeCtrl.selectNode;
+            ObjectCtrlInfo objCtrl = Studio().dicInfo[selectNode];
+            if(objCtrl is OCIChar)
+            {
+
+            }
+        }
         public static Studio.Studio Studio()
         {
             return Singleton<Studio.Studio>.Instance;

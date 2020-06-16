@@ -74,12 +74,11 @@ namespace StudioAssistPlugin.Util
             {
                 return false;
             }
-            Tracer.Log("YML IsLimb Name " + go.transformTarget.name);
             if (go.enablePos)
             {
                 return false;
             }
-            return go.IsHand() || go.IsFoot();
+             return go.IsHand() || go.IsFoot();
         }
 
         public static GuideObject GuideObject(this Transform transform)

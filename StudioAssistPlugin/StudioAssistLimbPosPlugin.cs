@@ -15,7 +15,7 @@ namespace StudioAssistPlugin
         // Awake is called once when both the game and the plug-in are loaded
         void Awake()
         {
-            Tracer.Log("YML StudioAssistLimbPosPlugin");
+            Tracer.Log("StudioAssistLimbPosPlugin");
         }
 
         private Vector2 lastMousePos;
