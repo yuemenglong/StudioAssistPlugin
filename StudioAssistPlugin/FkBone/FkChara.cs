@@ -8,7 +8,7 @@ namespace StudioAssistPlugin.FkBone
 {
     public class FkChara
     {
-//        private static Color _lockedColor = new Color(0.8f, 0f, 0f, 0.4f);
+        //        private static Color _lockedColor = new Color(0.8f, 0f, 0f, 0.4f);
 
         #region Field
 
@@ -109,15 +109,15 @@ namespace StudioAssistPlugin.FkBone
                 throw new Exception("Invalid Root");
             }
 
-            Transform hips = null;
-            if (IsFemale())
-            {
-                hips = root.Find("BodyTop/p_cf_anim/cf_J_Root/cf_N_height/cf_J_Hips");
-            }
-            else
-            {
-                hips = root.Find("BodyTop/p_cm_anim/cm_J_Root/cm_N_height/cm_J_Hips");
-            }
+            Transform hips = root.FindChildLoopByRegex(@"^c[fm]_J_Hips$");
+            // if (IsFemale())
+            // {
+            //     hips = root.Find("BodyTop/p_cf_anim/cf_J_Root/cf_N_height/cf_J_Hips");
+            // }
+            // else
+            // {
+            //     hips = root.Find("BodyTop/p_cm_anim/cm_J_Root/cm_N_height/cm_J_Hips");
+            // }
 
             if (hips == null)
             {
@@ -132,7 +132,7 @@ namespace StudioAssistPlugin.FkBone
         {
             if (!Context.DicGuideObject().ContainsKey(transform))
             {
-//                Tracer.Log("Not Contains", transform);
+                //                Tracer.Log("Not Contains", transform);
                 return null;
             }
 
@@ -227,7 +227,7 @@ namespace StudioAssistPlugin.FkBone
 
         public FkBone[] Limbs()
         {
-            return new[] {_handL, _handR, _foot01L, _foot01R};
+            return new[] { _handL, _handR, _foot01L, _foot01R };
         }
 
         public FkBone Head
@@ -235,16 +235,24 @@ namespace StudioAssistPlugin.FkBone
             get => _head;
         }
 
-//        private void CheckFinger(Transform transform)
-//        {
-//            var names = new[] {"Thumb", "Index", "Middle", "Ring", "Little"}.Map(n =>
-//                String.Format("Hand_{0}", n));
-//            if (names.Filter(n => transform.name.IndexOf(n, StringComparison.Ordinal) > 0).Length == 1)
-//            {
-//                _fingers.Add(CreateBone(transform));
-//            }
-//        }
-
+        //        private void CheckFinger(Transform transform)
+        //        {
+        //            var names = new[] {"Thumb", "Index", "Middle", "Ring", "Little"}.Map(n =>
+        //                String.Format("Hand_{0}", n));
+        //            if (names.Filter(n => transform.name.IndexOf(n, StringComparison.Ordinal) > 0).Length == 1)
+        //            {
+        //                _fingers.Add(CreateBone(transform));
+        //            }
+        //        }
+        private void LoopForDebug(Transform transform)
+        {
+            Tracer.Log("LoopForDebug", transform);
+            for (var i = 0; i < transform.childCount; i++)
+            {
+                LoopForDebug(transform.GetChild(i));
+            }
+        }
+        
         private void LoopChildren(Transform transform)
         {
             if (transform.name == "pcAnimator")
@@ -501,7 +509,7 @@ namespace StudioAssistPlugin.FkBone
                 #endregion finger03
 
                 default:
-//                    CheckFinger(transform);
+                    //                    CheckFinger(transform);
                     break;
             }
 
