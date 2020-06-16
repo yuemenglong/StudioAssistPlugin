@@ -15,12 +15,12 @@ namespace StudioAssistPlugin
         // Awake is called once when both the game and the plug-in are loaded
         void Awake()
         {
-              Tracer.Log("StudioAssistLimbRotPlugin");
+            Tracer.Log("StudioAssistLimbRotPlugin");
         }
 
         private void Update()
         {
-            
+
             try
             {
                 Rotate();
@@ -57,78 +57,79 @@ namespace StudioAssistPlugin
             }
             if (Input.GetKey(KeyCode.X) && Input.GetMouseButton(0))
             {
-                FkCharaMgr.BuildFkJointRotater(go).Forward(dist);
+                var rotater = FkCharaMgr.BuildFkJointRotater(go);
+                if (rotater == null)
+                {
+                    return;
+                }
+                rotater.Forward(dist);
             }
             else if (Input.GetKey(KeyCode.X) && Input.GetMouseButton(1))
             {
-                FkCharaMgr.BuildFkJointRotater(go).Forward(-dist);
+                var rotater = FkCharaMgr.BuildFkJointRotater(go);
+                if (rotater == null)
+                {
+                    return;
+                }
+                rotater.Forward(-dist);
             }
             //
             else if (Input.GetKey(KeyCode.C) && Input.GetMouseButton(0))
             {
-                FkCharaMgr.BuildFkJointRotater(go).Tangent(angle);
+                var rotater = FkCharaMgr.BuildFkJointRotater(go);
+                if (rotater == null)
+                {
+                    return;
+                }
+                rotater.Tangent(angle);
             }
             else if (Input.GetKey(KeyCode.C) && Input.GetMouseButton(1))
             {
-                FkCharaMgr.BuildFkJointRotater(go).Tangent(-angle);
+                var rotater = FkCharaMgr.BuildFkJointRotater(go);
+                if (rotater == null)
+                {
+                    return;
+                }
+                rotater.Tangent(-angle);
             }
             //
             else if (Input.GetKey(KeyCode.V) && Input.GetMouseButton(0))
             {
-                FkCharaMgr.BuildFkJointRotater(go).Normals(angle);
+                var rotater = FkCharaMgr.BuildFkJointRotater(go);
+                if (rotater == null)
+                {
+                    return;
+                }
+                rotater.Normals(angle);
             }
             else if (Input.GetKey(KeyCode.V) && Input.GetMouseButton(1))
             {
-                FkCharaMgr.BuildFkJointRotater(go).Normals(-angle);
+                var rotater = FkCharaMgr.BuildFkJointRotater(go);
+                if (rotater == null)
+                {
+                    return;
+                }
+                rotater.Normals(-angle);
             }
             //
             else if (Input.GetKey(KeyCode.B) && Input.GetMouseButton(0))
             {
-                FkCharaMgr.BuildFkJointRotater(go).Revolution(angle);
+                var rotater = FkCharaMgr.BuildFkJointRotater(go);
+                if (rotater == null)
+                {
+                    return;
+                }
+                rotater.Revolution(angle);
             }
             else if (Input.GetKey(KeyCode.B) && Input.GetMouseButton(1))
             {
-                FkCharaMgr.BuildFkJointRotater(go).Revolution(-angle);
+                var rotater = FkCharaMgr.BuildFkJointRotater(go);
+                if (rotater == null)
+                {
+                    return;
+                }
+                rotater.Revolution(-angle);
             }
-            // //
-            // else if (Input.GetKey(KeyCode.G) && Input.GetMouseButton(0))
-            // {
-            //     FkJointAssist.MoveEndX(go, dist);
-            // }
-            // else if (Input.GetKey(KeyCode.G) && Input.GetMouseButton(1))
-            // {
-            //     FkJointAssist.MoveEndX(go, -dist);
-            // }
-            // //
-            // else if (Input.GetKey(KeyCode.Y) && Input.GetMouseButton(0))
-            // {
-            //     FkJointAssist.MoveEndY(go, dist);
-            // }
-            // else if (Input.GetKey(KeyCode.Y) && Input.GetMouseButton(1))
-            // {
-            //     FkJointAssist.MoveEndY(go, -dist);
-            // }
-            // //
-            // else if (Input.GetKey(KeyCode.H) && Input.GetMouseButton(0))
-            // {
-            //     FkJointAssist.MoveEndZ(go, dist);
-            // }
-            // else if (Input.GetKey(KeyCode.H) && Input.GetMouseButton(1))
-            // {
-            //     FkJointAssist.MoveEndZ(go, -dist);
-            // }
-            //
-            //            else
-            //            {
-            //                if (_counter > 1)
-            //                {
-            //                    UndoRedoHelper.Finish();
-            ////                    FinishRotate();
-            //                }
-            //
-            //                _counter = 0;
-            ////                _oldRot = CollectOldRot();
-            //            }
         }
 
         private Vector2 GetMousePos()

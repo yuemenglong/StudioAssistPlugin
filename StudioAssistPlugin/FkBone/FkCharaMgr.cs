@@ -11,7 +11,7 @@ namespace StudioAssistPlugin.FkBone
     {
 //        public static FkChara[] Charas = new FkChara[0];
 //        public static bool IsMarkerEnabled = false;
-        private static string regex = @"^cha[FM]\d{2}$";
+        private static string regex = @"^cha[FM]\d{3}$";
 
         public static FkChara BuildChara(GuideObject go)
         {
@@ -93,6 +93,10 @@ namespace StudioAssistPlugin.FkBone
         {
             //var chara = FkCharaMgr.BuildChara(go.transformTarget);
             var chara = FkCharaMgr.BuildChara(go);
+            if(chara == null)
+            {
+                return null;
+            }
             var point = chara.DicTransBones[go.transformTarget];
             if (go.IsLimb())
             {
