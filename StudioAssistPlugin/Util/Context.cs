@@ -46,11 +46,11 @@ namespace StudioAssistPlugin.Util
             return Singleton<Studio.Studio>.Instance;
         }
 
-        
+
         public static OCIChar GetSelectedOCIChar()
         {
             TreeNodeObject selectNode = Studio().treeNodeCtrl.selectNode;
-            if (!Studio().dicInfo.ContainsKey(selectNode))
+            if (selectNode == null || !Studio().dicInfo.ContainsKey(selectNode))
             {
                 return null;
             }

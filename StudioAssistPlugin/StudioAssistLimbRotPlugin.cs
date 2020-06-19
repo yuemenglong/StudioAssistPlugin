@@ -37,6 +37,10 @@ namespace StudioAssistPlugin
 
         private void Rotate()
         {
+            if (Context.GuideObjectManager() == null)
+            {
+                return;
+            }
             var go = Context.GuideObjectManager().selectObject;
             if (go == null)
             {

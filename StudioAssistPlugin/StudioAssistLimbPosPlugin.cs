@@ -85,6 +85,10 @@ namespace StudioAssistPlugin
 
         private void InnerUpdate()
         {
+            if (Context.GuideObjectManager() == null)
+            {
+                return;
+            }
             var go = Context.GuideObjectManager().selectObject;
             if (go == null)
             {

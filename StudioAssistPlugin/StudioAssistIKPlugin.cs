@@ -44,6 +44,10 @@ namespace StudioAssistPlugin
             //            {
             //                return;
             //            }
+            if (Context.GuideObjectManager() == null)
+            {
+                return;
+            }
 
             Camera camera = MainCamera();
             if (camera == null)
