@@ -32,14 +32,12 @@ namespace StudioAssistPlugin
             Screen.width * 0.2f,
             Screen.height * 0.2f);
 
-        private int wid = 18539;
-
-        private static bool useGUI()
+        public static bool useGUI()
         {
             return _lockRecord.Count > 0;
         }
 
-        private static void ShowWindow(int id)
+        public static void ShowWindow(int id)
         {
             _lockRecord.ForEach(r =>
             {
