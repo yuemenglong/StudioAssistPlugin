@@ -42,11 +42,10 @@ namespace StudioAssistPlugin
             show = true;
             ch = c;
             delta = 0.1f;
-            time = 0;
             max = c.myGetAnimeLength().second;
+            time = c.myGetAnime().normalizedTime * max;
             change = false;
             var a = c.myGetAnimeLength();
-            Tracer.Log(a.second, a.frame, a.fps);
         }
 
         public static bool UseGUI()
@@ -97,7 +96,8 @@ namespace StudioAssistPlugin
                     time = max;
                 }
             });
-            if(GUIX.Button("CopyBone", 3)){
+            if (GUIX.Button("CopyBone", 3))
+            {
                 ch.mySetAnimeSpeed(0);
                 ch.myCopyBone();
                 ch.mySetFKActive(true);
@@ -133,10 +133,14 @@ namespace StudioAssistPlugin
                 }
                 init(c);
             }
-            if (show && ch != null)
+            if (show && ch != null && !change)
             {
                 max = ch.myGetAnimeLength().second;
-                // time = ch.myGetAnime().normalizedTime * max;
+                time = ch.myGetAnime().normalizedTime * max;
+                while (time >= max)
+                {
+                    time -= max;
+                }
             }
             // if (copyBone)
             // {
@@ -146,6 +150,7 @@ namespace StudioAssistPlugin
             copyBone = false;
             if (show && change && ch != null)
             {
+                ch.mySetFKActive(false);
                 ch.mySetAnimeSpeed(0);
                 var a = ch.myGetAnime();
                 a.normalizedTime = time / max;

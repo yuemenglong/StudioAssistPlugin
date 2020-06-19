@@ -2,6 +2,7 @@ using System;
 using System.Security;
 using Studio;
 using UnityEngine;
+using static Studio.OIBoneInfo;
 using static Studio.OICharInfo;
 
 namespace StudioAssistPlugin.Util
@@ -71,7 +72,7 @@ namespace StudioAssistPlugin.Util
 
         public static void mySetFKActive(this OCIChar ch, bool active)
         {
-            ch.ActiveKinematicMode(KinematicMode.FK, active, false);
+            ch.ActiveKinematicMode(KinematicMode.FK, active, true);
         }
 
         public static void mySetIKActive(this OCIChar ch, bool active)
