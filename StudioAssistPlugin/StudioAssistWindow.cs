@@ -33,7 +33,7 @@ namespace StudioAssistPlugin
                 ;
             if (useGUI)
             {
-                _windowRect = GUI.Window(wid, _windowRect, ShowWindow, "LimbLocker");
+                _windowRect = GUI.Window(wid, _windowRect, ShowWindow, "MyWindow");
             }
         }
 

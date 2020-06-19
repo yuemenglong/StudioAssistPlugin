@@ -21,30 +21,29 @@ namespace StudioAssistPlugin
 
         private static bool show = false;
         private static OCIChar ch = null;
-        private static float delta = 1;
+        private static float delta = 0.2f;
         private static float time = 0;
         private static float max = 0;
-
-        private static String deltaS = "1.0";
+        private static bool change = false;
 
         private static void reset()
         {
             show = false;
             ch = null;
-            delta = 1;
+            delta = 0.2f;
             time = 0;
             max = 0;
-            deltaS = "1.0";
+            change = false;
         }
 
         private static void init(OCIChar c)
         {
             show = true;
             ch = c;
-            delta = 1;
+            delta = 0.2f;
             time = 0;
             max = c.myGetAnimeLength().second;
-            deltaS = "1.0";
+            change = false;
         }
 
         public static bool UseGUI()
@@ -66,18 +65,35 @@ namespace StudioAssistPlugin
             });
             GUIX.Horizontal(() =>
             {
-                GUIX.Button("<", 4);
-                deltaS = GUIX.TextField(deltaS, 4);
-                GUIX.Button(">", 4);
+                if (GUIX.Button("<<", 3))
+                {
+                    time -= delta * 5;
+                    change = true;
+                }
+                if (GUIX.Button("<", 3))
+                {
+                    time -= delta;
+                    change = true;
+                }
+                if (GUIX.Button(">", 3))
+                {
+                    time += delta;
+                    change = true;
+                }
+                if (GUIX.Button(">>", 3))
+                {
+                    time += delta * 5;
+                    change = true;
+                }
+                if (time < 0)
+                {
+                    time = 0;
+                }
+                if (time > max)
+                {
+                    time = max;
+                }
             });
-            try
-            {
-                delta = float.Parse(deltaS);
-            }
-            catch (Exception e)
-            {
-
-            }
         }
 
         private void Update()
@@ -109,6 +125,16 @@ namespace StudioAssistPlugin
                 }
                 init(c);
             }
+            if (show && change && ch!=null)
+            {
+                ch.mySetAnimeSpeed(0);
+                var a = ch.myGetAnime();
+                a.normalizedTime = time / max;
+                ch.mySetAnime(a);
+                ch.mySetFKActive(true);
+                ch.myCopyBone();
+            }
+            change = false;
         }
     }
 }
