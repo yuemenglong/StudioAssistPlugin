@@ -21,16 +21,17 @@ namespace StudioAssistPlugin
 
         private static bool show = false;
         private static OCIChar ch = null;
-        private static float delta = 0.2f;
+        private static float delta = 0.1f;
         private static float time = 0;
         private static float max = 0;
         private static bool change = false;
+        private static bool copyBone = false;
 
         private static void reset()
         {
             show = false;
             ch = null;
-            delta = 0.2f;
+            delta = 0.1f;
             time = 0;
             max = 0;
             change = false;
@@ -40,10 +41,12 @@ namespace StudioAssistPlugin
         {
             show = true;
             ch = c;
-            delta = 0.2f;
+            delta = 0.1f;
             time = 0;
             max = c.myGetAnimeLength().second;
             change = false;
+            var a = c.myGetAnimeLength();
+            Tracer.Log(a.second, a.frame, a.fps);
         }
 
         public static bool UseGUI()
@@ -94,6 +97,11 @@ namespace StudioAssistPlugin
                     time = max;
                 }
             });
+            if(GUIX.Button("CopyBone", 3)){
+                ch.mySetAnimeSpeed(0);
+                ch.myCopyBone();
+                ch.mySetFKActive(true);
+            }
         }
 
         private void Update()
@@ -110,7 +118,7 @@ namespace StudioAssistPlugin
 
         private void InnerUpdate()
         {
-            if (Input.GetKey(KeyCode.O))
+            if (Input.GetKeyDown(KeyCode.O))
             {
                 if (show)
                 {
@@ -125,14 +133,24 @@ namespace StudioAssistPlugin
                 }
                 init(c);
             }
-            if (show && change && ch!=null)
+            if (show && ch != null)
+            {
+                max = ch.myGetAnimeLength().second;
+                // time = ch.myGetAnime().normalizedTime * max;
+            }
+            // if (copyBone)
+            // {
+            //     ch.myCopyBone();
+            //     ch.mySetFKActive(true);
+            // }
+            copyBone = false;
+            if (show && change && ch != null)
             {
                 ch.mySetAnimeSpeed(0);
                 var a = ch.myGetAnime();
                 a.normalizedTime = time / max;
                 ch.mySetAnime(a);
-                ch.mySetFKActive(true);
-                ch.myCopyBone();
+                copyBone = true;
             }
             change = false;
         }
