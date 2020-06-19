@@ -9,22 +9,13 @@ using UnityEngine;
 
 namespace StudioAssistPlugin
 {
-    [BepInPlugin("plugin.studio.assist.limb.lock", "StudioAssistLimbRotPlugin", "1.0.0.0")]
-    public class StudioAssistLimbLockPlugin : BaseUnityPlugin
+    [BepInPlugin("plugin.studio.assist.window", "StudioAssistLimbRotPlugin", "1.0.0.0")]
+    public class StudioAssistWindow : BaseUnityPlugin
     {
         void Awake()
         {
-            Tracer.Log("StudioAssistLimbLockPlugin");
+            Tracer.Log("StudioAssistWindow");
         }
-
-        struct LockRecord
-        {
-            public FkBone.FkBone Bone;
-            public Vector3 Pos;
-            public Quaternion Rot;
-        }
-
-        private static List<LockRecord> _lockRecord = new List<LockRecord>();
 
         private Rect _windowRect = new Rect(
             Screen.width * 0.8f,
@@ -32,19 +23,27 @@ namespace StudioAssistPlugin
             Screen.width * 0.2f,
             Screen.height * 0.2f);
 
-        private int wid = 18539;
+        private int wid = 13579;
 
-        private static bool useGUI()
+        private void OnGUI()
         {
-            return _lockRecord.Count > 0;
+            var useGUI = StudioAssistLimbLockPlugin.useGUI();
+            if (useGUI)
+            {
+                _windowRect = GUI.Window(wid, _windowRect, ShowWindow, "LimbLocker");
+            }
         }
 
-        private static void ShowWindow(int id)
+        private void ShowWindow(int id)
         {
-            _lockRecord.ForEach(r =>
+            try
             {
-                GUIX.Label(r.Bone.GuideObject.transformTarget.name, 12);
-            });
+                StudioAssistLimbLockPlugin.ShowWindow(id);
+            }
+            catch (Exception e)
+            {
+                Tracer.Log(e);
+            }
         }
 
         private void Update()
