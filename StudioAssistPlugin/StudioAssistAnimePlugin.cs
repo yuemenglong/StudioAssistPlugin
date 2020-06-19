@@ -9,13 +9,13 @@ using UnityEngine;
 
 namespace StudioAssistPlugin
 {
-    [BepInPlugin("plugin.studio.assist.select", "StudioAssistSelectPlugin", "1.0.0.0")]
-    public class StudioAssistSelectPlugin : BaseUnityPlugin
+    [BepInPlugin("plugin.studio.assist.anime", "StudioAssistAnimePlugin", "1.0.0.0")]
+    public class StudioAssistAnimePlugin : BaseUnityPlugin
     {
         // Awake is called once when both the game and the plug-in are loaded
         void Awake()
         {
-            Tracer.Log("StudioAssistSelectPlugin");
+            Tracer.Log("StudioAssistAnimePlugin");
         }
         private void Update()
         {

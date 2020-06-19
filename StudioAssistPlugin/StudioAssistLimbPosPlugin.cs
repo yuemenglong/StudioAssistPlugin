@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace StudioAssistPlugin
 {
-    [BepInPlugin("plugin.studio.assist.limb.pos", "StudioAssistLimbRotPlugin", "1.0.0.0")]
+    [BepInPlugin("plugin.studio.assist.limb.pos", "StudioAssistLimbPosPlugin", "1.0.0.0")]
     public class StudioAssistLimbPosPlugin : BaseUnityPlugin
     {
         // Awake is called once when both the game and the plug-in are loaded

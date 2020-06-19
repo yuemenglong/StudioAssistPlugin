@@ -46,6 +46,26 @@ namespace StudioAssistPlugin.Util
             return Singleton<Studio.Studio>.Instance;
         }
 
+        
+        public static OCIChar GetSelectedOCIChar()
+        {
+            TreeNodeObject selectNode = Studio().treeNodeCtrl.selectNode;
+            if (!Studio().dicInfo.ContainsKey(selectNode))
+            {
+                return null;
+            }
+            ObjectCtrlInfo objCtrl = Studio().dicInfo[selectNode];
+            if (objCtrl is OCIChar)
+            {
+                var ch = (OCIChar)objCtrl;
+                return ch;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static GuideObjectManager GuideObjectManager()
         {
             return Singleton<GuideObjectManager>.Instance;

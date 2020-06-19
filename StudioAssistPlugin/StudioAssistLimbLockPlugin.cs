@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace StudioAssistPlugin
 {
-    [BepInPlugin("plugin.studio.assist.limb.lock", "StudioAssistLimbRotPlugin", "1.0.0.0")]
+    [BepInPlugin("plugin.studio.assist.limb.lock", "StudioAssistLimbLockPlugin", "1.0.0.0")]
     public class StudioAssistLimbLockPlugin : BaseUnityPlugin
     {
         void Awake()
