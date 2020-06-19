@@ -27,7 +27,10 @@ namespace StudioAssistPlugin
 
         private void OnGUI()
         {
-            var useGUI = StudioAssistLimbLockPlugin.useGUI();
+            var useGUI =
+                StudioAssistLimbLockPlugin.UseGUI()
+                || StudioAssistAnimePlugin.UseGUI()
+                ;
             if (useGUI)
             {
                 _windowRect = GUI.Window(wid, _windowRect, ShowWindow, "LimbLocker");
@@ -39,6 +42,7 @@ namespace StudioAssistPlugin
             try
             {
                 StudioAssistLimbLockPlugin.ShowWindow(id);
+                StudioAssistAnimePlugin.ShowWindow(id);
             }
             catch (Exception e)
             {

@@ -32,7 +32,7 @@ namespace StudioAssistPlugin
             Screen.width * 0.2f,
             Screen.height * 0.2f);
 
-        public static bool useGUI()
+        public static bool UseGUI()
         {
             return _lockRecord.Count > 0;
         }
