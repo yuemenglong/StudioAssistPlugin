@@ -23,6 +23,20 @@ namespace StudioAssistPlugin.Util
             return IsMale(go) || IsFemale(go);
         }
 
+        public static bool IsHead(this GuideObject go)
+        {
+            var name = go.transformTarget.name;
+            return name == "cf_J_Head"
+                   || name == "cm_J_Head";
+        }
+
+        public static bool IsNeck(this GuideObject go)
+        {
+            var name = go.transformTarget.name;
+            return name == "cf_J_Neck"
+                   || name == "cm_J_Neck";
+        }
+
         public static bool IsHand(this GuideObject go)
         {
             var name = go.transformTarget.name;
@@ -78,7 +92,7 @@ namespace StudioAssistPlugin.Util
             {
                 return false;
             }
-             return go.IsHand() || go.IsFoot();
+            return go.IsHand() || go.IsFoot();
         }
 
         public static GuideObject GuideObject(this Transform transform)

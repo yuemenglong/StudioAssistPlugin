@@ -46,7 +46,6 @@ namespace StudioAssistPlugin.Util
             return Singleton<Studio.Studio>.Instance;
         }
 
-
         public static OCIChar GetSelectedOCIChar()
         {
             TreeNodeObject selectNode = Studio().treeNodeCtrl.selectNode;
